@@ -90,6 +90,11 @@ async def latest():
         print("send")
         await bot.send_message(Data_channel,"".join(Data))
 
+@bot.command()
+async def uptime():
+    """Tells you how long the bot has been up for."""
+    await bot.say('I been up for {}'.format(get_bot_uptime()))
+
 @bot.command(name = "time",brief="Allow to change timer for bot checking thread and post.",pass_context= True)
 @commands.has_any_role("Mod","Owner")
 async def Timer(msg):

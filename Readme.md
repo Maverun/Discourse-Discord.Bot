@@ -15,3 +15,6 @@ This bot is currently Beta phase.
 Planning to add more as I could.
 
 Enjoy.
+
+
+MIT License
