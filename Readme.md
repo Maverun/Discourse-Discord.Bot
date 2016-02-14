@@ -6,9 +6,11 @@ Also make sure you get Discord Channel ID for discord reply to.
     -say \#channel
         you will see somthing like <#123456789>, just grab 123456789 part and replace it
     -If viewing on website 
-        look at a link, it may be like this https://discordapp.com/channels/5234234234/123456789
-        grab last ID after last of /, which is 123456789
-        
+        look at a link, it may be like this https://discordapp.com/channels/5234234234/**123456789**
+        grab last ID after last of /, which is **123456789**
+
+Note:
+You need to have either "Mod" or "Owner" role in order for !time command work. Otherwise, it will ignore you.
 This bot is currently Beta phase.
 Planning to add more as I could.
 
