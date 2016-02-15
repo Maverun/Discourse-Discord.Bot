@@ -1,7 +1,9 @@
-This bot allow to check Discourse if there is any new update or not.
+This bot allow to check Discourse if there is any new update thread or not.
 
 Simply replace your email and password of discord account in Config.
+
 Also make sure you get Discord Channel ID for discord reply to.
+
     Few way to get ID from channel
     -say \#channel
         you will see somthing like <#123456789>, just grab 123456789 part and replace it
@@ -9,7 +11,10 @@ Also make sure you get Discord Channel ID for discord reply to.
         look at a link, it may be like this https://discordapp.com/channels/5234234234/123456789
         grab last ID after last of /, which is **123456789**
 
-Note:
+
+#Note:
+Type !help to see a list of commands
+
 You need to have either "Mod" or "Owner" role in order for !time command work. Otherwise, it will ignore you.
 This bot is currently Beta phase.
 Planning to add more as I could.
@@ -17,4 +22,4 @@ Planning to add more as I could.
 Enjoy.
 
 
-MIT License
+[MIT License](https://github.com/Maverun/Discourse-Discord.Bot/blob/master/LICENSE)
