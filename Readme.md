@@ -1,5 +1,7 @@
 This bot allow to check Discourse if there is any new update thread or not.
 
+Run Bot.py to run it.
+
 Lib require:
 
 Aiohttp v0.19.0
@@ -19,6 +21,8 @@ Also make sure you get Discord Channel ID for discord reply to.
     -If viewing on website 
         look at a link, it may be like this https://discordapp.com/channels/5234234234/123456789
         grab last ID after last of /, which is **123456789**
+
+Also, simple replace "https://animeforums.me" with your own Discourse link in Config.json files.
 
 
 #Note:
