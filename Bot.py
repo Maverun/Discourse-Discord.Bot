@@ -133,7 +133,7 @@ async def Summary_stat(msg): #Showing a summary stats of User
     if name == "":
         await bot.say("You didn't put name in!")
         return
-    data = Readlinkjson("/users/{}/summary".format(name))
+    data = await Readlinkjson("/users/{}/summary".format(name))
     if "errors" in data:
         await bot.say("{} is not found! Please double check case and spelling!".format(name))
         return
