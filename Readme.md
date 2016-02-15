@@ -1,5 +1,14 @@
 This bot allow to check Discourse if there is any new update thread or not.
 
+Lib require:
+
+Aiohttp v0.19.0
+
+Discord.py async:
+
+**If you run Install Discord.py.bat, it will auto/install Discord.py with aiohttp come in.**
+or if you rather have a link of discord.py, which is [this](https://github.com/Rapptz/discord.py). You do not need to install aiohttp at all, unless you get error about import of it which you might need to do manual install it.
+
 Simply replace your email and password of discord account in Config.
 
 Also make sure you get Discord Channel ID for discord reply to.
