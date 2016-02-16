@@ -16,12 +16,13 @@ async def on_ready():
     bot.uptime = datetime.datetime.utcnow()
     global Data_channel
     Data_channel = bot.get_channel(Config["Data Channel"])
-    await timer()
+    bot.loop.create_task(fetch_latest_in_background)
 
-async def timer():
-    await latest()
-    await asyncio.sleep(Config["Second"])
-    await timer()
+async def fetch_latest_in_background():
+    try:
+        await latest()
+    finally:
+        bot.loop.call_later(Config["Second"], lambda: bot.loop.create_task(fetch_latest_in_background))
 
 def get_bot_uptime():
     now = datetime.datetime.utcnow()
