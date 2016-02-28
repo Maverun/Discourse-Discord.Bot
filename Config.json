@@ -1,7 +1,11 @@
 {
-  "username": "email",
-  "password": "password",
-  "Data Channel": "enter channel of Certain Channel you want bot post to",
-  "link":"https://animeforums.me",
+  "password": "Password here",
+  "username": "Username here",
+  "Owner": "Owner ID",
+  "API Key":"API Key",
+  "API Username":"API username for that ^ key",
+  "link": "Link here",
+  "Bot name":"Name of bot",
+  "Data Channel": "Enter channel of certain channel you want bot post to",
   "Second": 300
 }

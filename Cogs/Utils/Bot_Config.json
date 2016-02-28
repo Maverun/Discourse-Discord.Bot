@@ -1,0 +1,22 @@
+{
+  "Config": {
+    "Greet": {
+      "Whisper": "on",
+      "Message": "Welcome {}! Please enjoy your stay",
+      "Enable": "off"
+    }
+  },
+  "Roles": [
+    "Owner",
+    "Mod",
+    "Admin"
+  ],
+  "Cogs": {
+    "Forum": {
+      "Bio": "bio",
+      "Summary_Stat": "summary",
+      "Timer": "time",
+      "Statictics": "stats"
+    }
+  }
+}
