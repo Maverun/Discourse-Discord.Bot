@@ -11,7 +11,7 @@ with open(current_dir+"/Bot_Config.json") as f:
     Bot_Config = json.load(f)
 
 #Config setting with ID, link,account etc
-with open(main_dr+"/Config.json") as f:
+with open(main_dr+"/Main_Config.json") as f:
     config = json.load(f)
 
 website=config["link"]

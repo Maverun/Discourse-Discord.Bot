@@ -10,7 +10,7 @@ def Setup(): #Rerun those for refresh variables when reload
     global Bot_Config
     Config= Read.config
     Roles = Read.Bot_Config["Roles"]
-    Command= Read.Bot_Config["Cogs"]
+    Command= Read.Bot_Config["cogs"]
     Bot_Config=Read.Bot_Config
 
 
@@ -34,10 +34,10 @@ class Tools():
     def __init__(self, bot):
         self.bot = bot
         Setup()
-        if Bot_Config["Config"]["Greet"]["Enable"] == "on":
+        if Bot_Config["Main_Config"]["Greet"]["Enable"] == "on":
             self.bot.add_listener(self.Greet_Message,"on_member_join")
 
-    #Load/Unload/Reload Cogs
+    #Load/Unload/Reload cogs
     @commands.command(hidden=False)
     @commands.check(is_owner)
     async def load(self,*, module : str):
@@ -89,7 +89,7 @@ class Tools():
             raise
         else:
             await self.bot.say("Module reloaded.")
-    #Load/Unload/Reload Cogs
+    #Load/Unload/Reload cogs
 
     #Change Command/Role
     @commands.group(name="change",brief="Allow to change either/update roles/commands",pass_context=True,invoke_without_command=True)
@@ -168,7 +168,7 @@ class Tools():
                 if edit_command.content == Command[cog.content][command.content]:
                     await self.bot.say("It is a same command!")
                 elif edit_command.content != Command[cog.content][command.content]:
-                    Bot_Config["Cogs"][cog.content].update({command.content:edit_command.content})
+                    Bot_Config["cogs"][cog.content].update({command.content:edit_command.content})
                     await Read.InputFiles(Read.Bot_Config, "Cogs/Utils", "Bot_Config.json")
                     self.bot.unload_extension("Cogs."+cog.content)
                     self.bot.load_extension("Cogs."+cog.content)
@@ -200,23 +200,23 @@ class Tools():
             await self.bot.say("You was taking too long, try again \n Tips:Maybe copy text and then paste?")
             return
         print(answer.content)
-        print(Bot_Config["Config"]["Greet"]["Message"])
-        Bot_Config["Config"]["Greet"].update({"Message":answer.content})
+        print(Bot_Config["Main_Config"]["Greet"]["Message"])
+        Bot_Config["Main_Config"]["Greet"].update({"Message":answer.content})
         await Read.InputFiles(Read.Bot_Config, "Cogs/Utils", "Bot_Config.json")
         await self.bot.say("Updated.")
 
     @commands.check(is_owner)
     @Greet.command(name="enable",brief="Allow to enable greet message or not",pass_context=True,invoke_without_command=True)
     async def Greet_enable(self,msg):
-        await self.bot.say("The currently setting is {}\nWhat do you want to change to(on/off).".format(Read.Bot_Config["Config"]["Greet"]["Enable"]))
+        await self.bot.say("The currently setting is {}\nWhat do you want to change to(on/off).".format(Read.Bot_Config["Main_Config"]["Greet"]["Enable"]))
         answer = await self.bot.wait_for_message(timeout=15,author=msg.message.author)
         if answer is None:
             print ("You didn't enter any! Try again!")
         elif answer.content == "on" or answer.content == "off":
-            if Bot_Config["Config"]["Greet"]["Enable"] == answer.content:
+            if Bot_Config["Main_Config"]["Greet"]["Enable"] == answer.content:
                 await self.bot.say("It is already set as {}!".format(answer.content))
             else:
-                Bot_Config["Config"]["Greet"].update({"Enable":answer.content})
+                Bot_Config["Main_Config"]["Greet"].update({"Enable":answer.content})
                 await Read.InputFiles(Read.Bot_Config,"Cogs/Utils","Bot_Config.json")
                 self.bot.unload_extension("Cogs.Tools")
                 self.bot.load_extension("Cogs.Tools")
@@ -225,15 +225,15 @@ class Tools():
     @commands.check(is_owner)
     @Greet.command(name="pm",brief="Allow to set for bot to PM user only or in public",pass_context=True,invoke_without_command=True)
     async def Greet_PM(self,msg):
-        await self.bot.say("The currently setting is {}\nWhat do you want to change to(on/off).".format(Read.Bot_Config["Config"]["Greet"]["Whisper"]))
+        await self.bot.say("The currently setting is {}\nWhat do you want to change to(on/off).".format(Read.Bot_Config["Main_Config"]["Greet"]["Whisper"]))
         answer = await self.bot.wait_for_message(timeout=15,author=msg.message.author)
         if answer is None:
             print ("You didn't enter any! Try again!")
         elif answer.content == "on" or answer.content == "off":
-            if Bot_Config["Config"]["Greet"]["Whisper"] == answer.content:
+            if Bot_Config["Main_Config"]["Greet"]["Whisper"] == answer.content:
                 await self.bot.say("It is already set as {}!".format(answer.content))
             else:
-                Bot_Config["Config"]["Greet"].update({"Whisper":answer.content})
+                Bot_Config["Main_Config"]["Greet"].update({"Whisper":answer.content})
                 await Read.InputFiles(Read.Bot_Config,"Cogs/Utils","Bot_Config.json")
                 self.bot.unload_extension("Cogs.Tools")
                 self.bot.load_extension("Cogs.Tools")
@@ -241,10 +241,10 @@ class Tools():
 
     async def Greet_Message(self,member):
         print(member)
-        if Bot_Config["Config"]["Greet"]["Whisper"] == "on":
-            await self.bot.send_message(member,Bot_Config["Config"]["Greet"]["Message"].format(member,member.mention))
+        if Bot_Config["Main_Config"]["Greet"]["Whisper"] == "on":
+            await self.bot.send_message(member,Bot_Config["Main_Config"]["Greet"]["Message"].format(member,member.mention))
         else:
-            await self.bot.send_message(self.bot.get_channel(member.server.id),Bot_Config["Config"]["Greet"]["Message"].format(member,member.mention))
+            await self.bot.send_message(self.bot.get_channel(member.server.id),Bot_Config["Main_Config"]["Greet"]["Message"].format(member,member.mention))
 
 def setup(bot):
     bot.add_cog(Tools(bot))

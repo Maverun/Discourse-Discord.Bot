@@ -9,7 +9,7 @@ def Setup():
     global Roles
     global website
     Config= Read.config #Config.json files
-    Command=Read.Bot_Config["Cogs"]["Forum"] #command so it is easier to call it
+    Command=Read.Bot_Config["cogs"]["Forum"] #command so it is easier to call it
     Roles = Read.Bot_Config["Roles"] #Role for permission, so it is easier to call it
     website = Config["link"] #Main website link
 
