@@ -3,8 +3,8 @@ from Cogs.Utils import Read
 import datetime
 import glob
 
-Main_Config=Read.config
-description = '''{} bot Command List. '''.format(Main_Config["Bot name"])
+Config=Read.config
+description = '''{} bot Command List. '''.format(Config["Bot name"])
 bot = commands.Bot(command_prefix='!', description=description)
 
 @bot.event
@@ -18,14 +18,14 @@ async def on_ready():
 
 =======
     global Data_channel
-    Data_channel = bot.get_channel(Main_Config["Data Channel"])
+    Data_channel = bot.get_channel(Config["Data Channel"])
     bot.loop.create_task(fetch_latest_in_background())
 
 async def fetch_latest_in_background():
     try:
         await latest()
     finally:
-        bot.loop.call_later(Main_Config["Second"], lambda: bot.loop.create_task(fetch_latest_in_background()))
+        bot.loop.call_later(Config["Second"], lambda: bot.loop.create_task(fetch_latest_in_background()))
 >>>>>>> origin/master
 
 def get_bot_uptime():
@@ -58,15 +58,15 @@ def load_cogs():
             print(e)
 
 def list_cogs():
-    cogs = glob.glob("cogs/*.py")
+    cogs = glob.glob("Cogs/*.py")
     clean = []
     for c in cogs:
         c = c.replace("/", "\\") # Linux fix
-        clean.append("cogs." + c.split("\\")[1].replace(".py", ""))
+        clean.append("Cogs." + c.split("\\")[1].replace(".py", ""))
     return clean
 
 if __name__ == '__main__':
-    bot.run(Main_Config['username'], Main_Config['password'])
+    bot.run(Config['username'], Config['password'])
 =======
 @bot.command(name = "time",brief="Allow to change timer for bot checking thread and post.",pass_context= True)
 @commands.has_any_role("Mod","Owner")
@@ -83,8 +83,8 @@ async def Timer(msg):
     if second == "":
         await bot.say("You didn't put how many second in!")
     else:
-        Main_Config.update({"Second":int(second)})
-        await InputFiles(Main_Config, "Config.json")
+        Config.update({"Second":int(second)})
+        await InputFiles(Config,"Config.json")
         if int(second) <=60:
             await bot.say("It is now updated. You have enter {} second".format(second))
         else:
@@ -151,7 +151,7 @@ async def Statictics(): #To show a stats of website of what have been total post
 
 
 loop = asyncio.get_event_loop()
-Main_Config=loop.run_until_complete(Readfiles("Config.json"))
-website= Main_Config["link"]
-bot.run(Main_Config['username'], Main_Config['password'])
+Config=loop.run_until_complete(Readfiles("Config.json"))
+website= Config["link"]
+bot.run(Config['username'], Config['password'])
 >>>>>>> origin/master

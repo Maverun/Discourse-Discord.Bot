@@ -1,16 +1,3 @@
-------
-Note: This source code is bit of outdate, won't support most of site as depends on https version.
-I now run a bot that you can use mine.
-[Click here](http://nurevam.site/)
-to get my bot to join on your server.
-It will run at every x timer and check if there is new thread for you or not.
-Login and select server, then enable Discourse, then put info what is requirement in there.
-Then you will have my bot will post when there is new thread.
-
-------
-
-
-
 This bot allow to check Discourse if there is any new update thread or not.
 
 Run Bot.py to run it.
